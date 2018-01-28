@@ -8,11 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b65ec2b40b4fbd34b9b30686d36277f7, type: 3}
-  m_Name: TreeTile
+  m_Script: {fileID: 11500000, guid: 535f8e525ff367c4ba67961e201a05ed, type: 3}
+  m_Name: RandomGrassTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 31d5fd9a2ecfccf4785ada57fac50422, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0
@@ -30,7 +30,8 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 1121175818998706, guid: 46b826e36a3e8684596a971f93f84f6a,
-    type: 2}
-  m_Flags: 4
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 1
   m_ColliderType: 1
+  m_Sprites:
+  - {fileID: 21300000, guid: 89190edd7bccb2049bf949e44f68041f, type: 3}
