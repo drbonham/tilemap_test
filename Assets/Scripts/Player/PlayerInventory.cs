@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public int slotCnt;
+    public GameObject slotPrefab;
+
+    Item[] items;
+
+    private void Start()
+    {
+        AddSlots(slotCnt);
+        items = new Item[slotCnt];
+    }
+
+    public void AddSlots(int cnt)
+    {
+        for (int i = 0; i < cnt; i++)
+        {
+            Instantiate(slotPrefab, transform);
+        }
+    }
 }
