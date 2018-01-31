@@ -75,19 +75,22 @@ public class TileMapChunkGeneratorV2 : MonoBehaviour {
                                 // tile based on the offset here
                                 // This should match the world position and noisemap position
                                 Vector3Int offset = new Vector3Int(tx + (x*chunkSize.x),ty + (y* chunkSize.y),0);
-                                if (curSettings.noiseMapMode)
+                                if (noiseMap[offset.x, offset.y] > curSettings.noiseThreshold)
                                 {
-                                    tm.SetTile(offset, curSettings.tileType);
-                                    tm.SetTileFlags(offset, TileFlags.None);
-                                    tm.SetColor(offset, Color.Lerp(Color.white, Color.black, noiseMap[offset.x, offset.y]));
-                                }
-                                else if(curSettings.randomizeDensity && (noiseMap[offset.x, offset.y] > Random.value))
-                                {
-                                    tm.SetTile(offset, curSettings.tileType);
-                                }
-                                else if(!curSettings.randomizeDensity)
-                                {
-                                    tm.SetTile(offset, curSettings.tileType);
+                                    if (curSettings.noiseMapMode)
+                                    {
+                                        tm.SetTile(offset, curSettings.tileType);
+                                        tm.SetTileFlags(offset, TileFlags.None);
+                                        tm.SetColor(offset, Color.Lerp(Color.white, Color.black, noiseMap[offset.x, offset.y]));
+                                    }
+                                    else if (curSettings.randomizeDensity && (noiseMap[offset.x, offset.y] > Random.value))
+                                    {
+                                        tm.SetTile(offset, curSettings.tileType);
+                                    }
+                                    else if (!curSettings.randomizeDensity)
+                                    {
+                                        tm.SetTile(offset, curSettings.tileType);
+                                    }
                                 }
                             }
                         }
@@ -127,9 +130,15 @@ public struct TileSettings
 
     public bool noiseMapMode;
     public bool randomizeDensity;
+    [Range(0,1)]
+    public float noiseThreshold;
+
     public float scale;
+    [Range(0,30)]
     public int octaves;
+    [Range(0f,1f)]
     public float persistance;
+    [Range(1f, 3.2f)]
     public float lacunarity;
     public Vector2 offset;
 }
