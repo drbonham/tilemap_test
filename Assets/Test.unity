@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seed: 22
-  chunkCnt: {x: 100, y: 100}
+  chunkCnt: {x: 20, y: 20}
   chunkSize: {x: 20, y: 10}
   layerSettings:
   - name: Base
