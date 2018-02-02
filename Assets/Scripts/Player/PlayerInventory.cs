@@ -33,6 +33,31 @@ public class PlayerInventory : MonoBehaviour {
         // UI
         allSlots = new PlayerInventorySlot[slotCnt];
         AddSlots(slotCnt);
+        inventoryPanel.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            ToggleInventoryPanel();
+        }
+        if(Input.GetKeyDown(KeyCode.Escape) && inventoryPanel.IsActive())
+        {
+            ToggleInventoryPanel();
+        }
+    }
+
+    void ToggleInventoryPanel()
+    {
+        if (inventoryPanel.IsActive())
+        {
+            inventoryPanel.gameObject.SetActive(false);
+        }
+        else
+        {
+            inventoryPanel.gameObject.SetActive(true);
+        }
     }
 
     // Rework all this later
@@ -89,7 +114,6 @@ public class PlayerInventory : MonoBehaviour {
         UpdateUI();
         return wasAdded;
     }
-
 
     // UI
     public void AddSlots(int cnt)
