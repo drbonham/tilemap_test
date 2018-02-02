@@ -189,6 +189,15 @@ MonoBehaviour:
       persistance: 0.6
       lacunarity: 9.3
       offset: {x: 30, y: 30}
+    - tileType: {fileID: 11400000, guid: b6966073f2e1c9242a297b40ce706bae, type: 2}
+      noiseMapMode: 0
+      randomizeDensity: 1
+      noiseThreshold: 0.8
+      scale: 5
+      octaves: 4
+      persistance: 0.762
+      lacunarity: 2.41
+      offset: {x: 30, y: 30}
 --- !u!156049354 &97526127
 Grid:
   m_ObjectHideFlags: 0

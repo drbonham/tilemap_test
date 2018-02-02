@@ -4,10 +4,11 @@ using UnityEngine;
 
 public enum ObstacleType
 {
-    Tree
+    Tree,
+    Rock
 }
 
-public abstract class Obstacle : MonoBehaviour {
+public class Obstacle : MonoBehaviour {
 
     SpriteRenderer sr;
     public float originalAlpha = 1f;

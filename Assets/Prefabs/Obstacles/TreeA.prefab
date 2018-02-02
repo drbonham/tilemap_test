@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4816998035529484}
   - component: {fileID: 212114252398554722}
   - component: {fileID: 60591947594080628}
-  - component: {fileID: 114316726170891462}
+  - component: {fileID: 114619213513775988}
   m_Layer: 0
   m_Name: TreeA
   m_TagString: Obstacle
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4817700822233656}
   - component: {fileID: 61123515760948366}
   m_Layer: 8
-  m_Name: Trunk
+  m_Name: MovementCollider
   m_TagString: GatherAble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1121175818998706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.358739, y: 0.93429714, z: 0}
+  m_LocalPosition: {x: 7.647949, y: 1.1494973, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4817700822233656}
@@ -126,7 +126,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.21427865, y: 0.24292815}
   m_EdgeRadius: 0
---- !u!114 &114316726170891462
+--- !u!114 &114619213513775988
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -134,12 +134,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1121175818998706}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 063c96fef907f1048bebc583bd77a454, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d786128006c6aa47b9fb669261b15c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   originalAlpha: 1
   transparentAlpha: 0.7
-  health: 60
+  health: 30
   obstacleType: 0
   gatherAble: 1
   gatherTool: 0

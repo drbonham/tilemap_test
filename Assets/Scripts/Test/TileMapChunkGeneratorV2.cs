@@ -16,7 +16,7 @@ public class TileMapChunkGeneratorV2 : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
-        if (_Instance = null)
+        if (_Instance == null)
             _Instance = this;
 
         totalSize = new Vector2Int(chunkCnt.x * chunkSize.x, chunkCnt.y * chunkSize.y);
