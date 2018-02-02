@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TileMapChunkGeneratorV2 : MonoBehaviour {
+    public static TileMapChunkGeneratorV2 _Instance;
 
     public int seed;
     public Vector2Int chunkCnt;
@@ -14,7 +15,10 @@ public class TileMapChunkGeneratorV2 : MonoBehaviour {
     MapChunk[] mapChunks;
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
+        if (_Instance = null)
+            _Instance = this;
+
         totalSize = new Vector2Int(chunkCnt.x * chunkSize.x, chunkCnt.y * chunkSize.y);
         Random.InitState(seed);
         InitializeChunks();

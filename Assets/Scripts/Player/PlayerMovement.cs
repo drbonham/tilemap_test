@@ -7,6 +7,9 @@ public class PlayerMovement : MonoBehaviour {
 
     public float moveSpeed = 5f;
     float xMin, xMax, yMin, yMax;
+    Rigidbody2D rigidBody;
+    float moveHorizontal, moveVertical;
+    Vector3 moveDirection;
 	// Use this for initialization
 	void Start () {
         if(TileMapChunkGenerator._Instance != null)
@@ -24,29 +27,19 @@ public class PlayerMovement : MonoBehaviour {
             xMin = yMin = 0;
             xMax = yMax = 3000;
         }
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.A) && transform.position.x > xMin)
-        {
-            transform.position 
-                = new Vector3(transform.position.x - moveSpeed * Time.deltaTime, transform.position.y, transform.position.z);
-        }
-        if (Input.GetKey(KeyCode.D) && transform.position.x < xMax)
-        {
-            transform.position
-                = new Vector3(transform.position.x + moveSpeed * Time.deltaTime, transform.position.y, transform.position.z);
-        }
-        if (Input.GetKey(KeyCode.W) && transform.position.y < yMax)
-        {
-            transform.position
-                = new Vector3(transform.position.x, transform.position.y + moveSpeed * Time.deltaTime, transform.position.z);
-        }
-        if (Input.GetKey(KeyCode.S) && transform.position.y > yMin)
-        {
-            transform.position
-                = new Vector3(transform.position.x, transform.position.y - moveSpeed * Time.deltaTime, transform.position.z);
-        }
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+        moveDirection = new Vector3(moveHorizontal, moveVertical, 0);
+    }
+
+    private void FixedUpdate()
+    {
+        //rigidBody.velocity = Vector3.zero;
+        rigidBody.velocity = moveDirection * moveSpeed * Time.fixedDeltaTime;
     }
 }

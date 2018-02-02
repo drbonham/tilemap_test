@@ -22,11 +22,12 @@ GameObject:
   - component: {fileID: 114997120591665050}
   - component: {fileID: 114507669206033812}
   - component: {fileID: 114570843482770166}
+  - component: {fileID: 114715013343075136}
   - component: {fileID: 61456488449128358}
   - component: {fileID: 50940442035550100}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +94,7 @@ GameObject:
   - component: {fileID: 58505261188133452}
   m_Layer: 0
   m_Name: GatherItemsArea
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -280,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49f9116c798d484bb2c556ff7017c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 5
 --- !u!114 &114570843482770166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,6 +293,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e77369c423912c946a3b4a32459f00bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114715013343075136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1015229449039454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001591f22876e4e4fa7f7f745334f8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotCnt: 10
+  slotPrefab: {fileID: 114553196597952570, guid: df8905d8737005a429125f22017e7502,
+    type: 2}
+  inventoryPanel: {fileID: 0}
+  items: []
+  allSlots: []
 --- !u!114 &114997120591665050
 MonoBehaviour:
   m_ObjectHideFlags: 1

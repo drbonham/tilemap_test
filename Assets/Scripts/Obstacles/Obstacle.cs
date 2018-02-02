@@ -17,7 +17,7 @@ public abstract class Obstacle : MonoBehaviour {
     public bool gatherAble;
     public ToolType gatherTool;
     public Collider2D gatherCollider;
-    public Item dropItemPrefab;
+    public ItemPickup dropItem;
     public Vector2Int dropItemAmtRange;
 
     Color originalColor;
@@ -48,12 +48,13 @@ public abstract class Obstacle : MonoBehaviour {
 
     public void DeleteAndDropItems()
     {
-        if (dropItemPrefab != null)
+        if (dropItem != null)
         {
             int ammountToDrop = Random.Range(dropItemAmtRange.x, dropItemAmtRange.y + 1);
             for (int i = 0; i < ammountToDrop; i++)
             {
-                Item drop = Instantiate<Item>(dropItemPrefab);
+                ItemPickup drop = Instantiate<ItemPickup>(dropItem);
+                drop.transform.SetParent(transform.parent);
                 drop.transform.position = new Vector3(transform.position.x + Random.Range(0f, 1f),
                     transform.position.y + Random.Range(0f, 1f), transform.position.z);
             }

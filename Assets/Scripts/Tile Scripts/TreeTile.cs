@@ -11,7 +11,7 @@ public class TreeTile : Tile {
     // Use this for initialization
     public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go)
     {
-        go.GetComponent<SpriteRenderer>().sortingOrder = -position.y * 2;
+        go.GetComponent<SpriteRenderer>().sortingOrder = -position.y * 3;
         return base.StartUp(position, tilemap, go);
     }
 

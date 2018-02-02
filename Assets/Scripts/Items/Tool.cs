@@ -33,14 +33,14 @@ public class Tool : MonoBehaviour {
             Obstacle obstacleHit = col.GetComponentInParent<Obstacle>();
             if (obstacleHit != null)
             {
-                Debug.Log("We've hit an obstacle game object!");
+                //Debug.Log("We've hit an obstacle game object!");
                 if(obstacleHit.gatherAble && obstacleHit.gatherTool == toolType)
                 {
-                    Debug.Log("We've hit a gatherable obstacle!");
+                    //Debug.Log("We've hit a gatherable obstacle!");
                     if(Vector2.Distance(
                         new Vector2(transform.position.x,transform.position.y),
                         new Vector2(col.transform.position.x,col.transform.position.y)) <= toolRange){
-                        Debug.Log("We are in range to gather!");
+                        //Debug.Log("We are in range to gather!");
                         obstacleHit.ApplyWork(workValue);
                     }
                 }

@@ -34,7 +34,7 @@ public class PlayerObstacleSort : MonoBehaviour {
         {
             allObstacles.Add(collision.gameObject);
             collision.GetComponent<Obstacle>().SetTransparent(true);
-            SetSpriteRenererOrder(collision.GetComponent<SpriteRenderer>().sortingOrder - 1);
+            SetSpriteRenererOrder(collision.GetComponent<SpriteRenderer>().sortingOrder - 2);
         }
     }
 

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour {
-    public Sprite sprite;
-    public int stackSize;
-    public int maxStackSize;
+[CreateAssetMenu(fileName ="New Item",menuName ="Inventory/Item")]
+public class Item : ScriptableObject {
+    new public string name = "New Item";
+    public Sprite icon = null;
+    public bool stackable = false;
+    public int maxStackSize = 10;
 }
