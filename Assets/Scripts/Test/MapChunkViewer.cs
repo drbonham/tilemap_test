@@ -38,8 +38,6 @@ public class MapChunkViewer : MonoBehaviour {
         {
             UpdateChunksVisible();
         }
-        print(currentChunkPosition);
-        print(lastChunkPosition);
     }
 
     void UpdateChunksVisible()
