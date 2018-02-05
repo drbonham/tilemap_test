@@ -8,6 +8,9 @@ public class PlayerCameraFollow : MonoBehaviour {
     Transform target;
 
     float xMax, xMin, yMax, yMin;
+    // Camera
+    public float _minZoom = 1f;
+    public float _maxZoom = 20f;
 
     void Start()
     {
@@ -29,6 +32,9 @@ public class PlayerCameraFollow : MonoBehaviour {
         Vector3 targetPos = new Vector3(Mathf.Clamp(target.position.x,xMin,xMax),
             Mathf.Clamp(target.position.y,yMin,yMax), -10);
         Camera.main.transform.position = targetPos;
+
+        Camera.main.orthographicSize -= Camera.main.orthographicSize * Input.GetAxis("Mouse ScrollWheel");
+        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, _minZoom, _maxZoom);
     }
 
     void SetLimits(Vector3 minTile, Vector3 maxTile)
