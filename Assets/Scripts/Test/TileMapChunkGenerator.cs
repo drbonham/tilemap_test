@@ -175,16 +175,16 @@ public struct TileMapLayer
     }
 }
 
-[System.Serializable]
-public struct NoiseMapSettings
-{
-    public int seed;
-    public float noiseScale;
-    public int ocataves;
-    public float persistance;
-    public float lacunarity;
-    public float offset;
-}
+//[System.Serializable]
+//public struct NoiseMapSettings
+//{
+//    public int seed;
+//    public float noiseScale;
+//    public int ocataves;
+//    public float persistance;
+//    public float lacunarity;
+//    public float offset;
+//}
 
 //[System.Serializable]
 //public struct TileMapLayer
