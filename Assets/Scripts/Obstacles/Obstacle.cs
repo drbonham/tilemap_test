@@ -4,10 +4,11 @@ using UnityEngine;
 
 public enum ObstacleType
 {
-    Tree
+    Tree,
+    Rock
 }
 
-public abstract class Obstacle : MonoBehaviour {
+public class Obstacle : MonoBehaviour {
 
     SpriteRenderer sr;
     public float originalAlpha = 1f;
@@ -17,9 +18,9 @@ public abstract class Obstacle : MonoBehaviour {
     public bool gatherAble;
     public ToolType gatherTool;
     public Collider2D gatherCollider;
-    public Item dropItemPrefab;
+    public ItemPickup dropItem;
     public Vector2Int dropItemAmtRange;
-
+    public Vector2 tilePlacementOffset = new Vector2(0.5f, 0.5f);
     Color originalColor;
     Color transparentColor;
 
@@ -29,6 +30,8 @@ public abstract class Obstacle : MonoBehaviour {
         originalColor = sr.color;
         transparentColor = originalColor;
         transparentColor.a = transparentAlpha;
+        transform.position = new Vector3(transform.position.x + tilePlacementOffset.x, 
+            transform.position.y + tilePlacementOffset.y, transform.position.z);
     }
 
 	public void SetTransparent(bool value)
@@ -48,14 +51,15 @@ public abstract class Obstacle : MonoBehaviour {
 
     public void DeleteAndDropItems()
     {
-        if (dropItemPrefab != null)
+        if (dropItem != null)
         {
             int ammountToDrop = Random.Range(dropItemAmtRange.x, dropItemAmtRange.y + 1);
             for (int i = 0; i < ammountToDrop; i++)
             {
-                Item drop = Instantiate<Item>(dropItemPrefab);
-                drop.transform.position = new Vector3(transform.position.x + Random.Range(0f, 1f),
-                    transform.position.y + Random.Range(0f, 1f), transform.position.z);
+                ItemPickup drop = Instantiate<ItemPickup>(dropItem);
+                drop.transform.SetParent(transform.parent);
+                drop.transform.position = new Vector3(transform.position.x + Random.Range(0f, 0.5f),
+                    transform.position.y + Random.Range(0f, 0.5f), transform.position.z);
             }
         }
         Destroy(gameObject);

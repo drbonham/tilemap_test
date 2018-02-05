@@ -8,11 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7475e0601c416524eaf6571886ecc416, type: 3}
-  m_Name: DirtTile
+  m_Script: {fileID: 11500000, guid: a53ec183a2f74894eacfe2517449fb65, type: 3}
+  m_Name: RockTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 9df8546550c57f448a0ffdaf2e22ad01, type: 3}
-  m_Color: {r: 0.41911763, g: 0.3143382, b: 0.3143382, a: 1}
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0
@@ -30,6 +30,7 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 0}
+  m_InstancedGameObject: {fileID: 1738149580207554, guid: a161fdd12970aab4fad78f6ec1dc4cc1,
+    type: 2}
   m_Flags: 1
   m_ColliderType: 1

@@ -5,27 +5,30 @@ using UnityEngine;
 public class PlayerObstacleSort : MonoBehaviour {
 
     List<GameObject> allObstacles;
-    SpriteRenderer[] playerSRs;
+    //SpriteRenderer[] playerSRs;
+    SpriteRenderer sr;
 
 	// Use this for initialization
 	void Start () {
         allObstacles = new List<GameObject>();
-        playerSRs = transform.parent.gameObject.GetComponentsInChildren<SpriteRenderer>();
+        sr = transform.parent.gameObject.GetComponent<SpriteRenderer>();
+        //playerSRs = transform.parent.gameObject.GetComponentsInChildren<SpriteRenderer>();
     }
 
     void SetSpriteRenererOrder(int sortOrder)
     {
-        foreach (SpriteRenderer sr in playerSRs)
-        {
-            if(sr.tag == "PlayerHead")
-            {
-                sr.sortingOrder = sortOrder + 1;
-            }
-            else
-            {
-                sr.sortingOrder = sortOrder;
-            }
-        }
+        sr.sortingOrder = sortOrder;
+        //foreach (SpriteRenderer sr in playerSRs)
+        //{
+        //    if(sr.tag == "PlayerHead")
+        //    {
+        //        sr.sortingOrder = sortOrder + 1;
+        //    }
+        //    else
+        //    {
+        //        sr.sortingOrder = sortOrder;
+        //    }
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,7 +37,7 @@ public class PlayerObstacleSort : MonoBehaviour {
         {
             allObstacles.Add(collision.gameObject);
             collision.GetComponent<Obstacle>().SetTransparent(true);
-            SetSpriteRenererOrder(collision.GetComponent<SpriteRenderer>().sortingOrder - 1);
+            SetSpriteRenererOrder(collision.GetComponent<SpriteRenderer>().sortingOrder - 2);
         }
     }
 

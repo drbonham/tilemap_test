@@ -5,48 +5,72 @@ using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour {
 
-    public float moveSpeed = 5f;
+    public float moveSpeed = 120f;
     float xMin, xMax, yMin, yMax;
-	// Use this for initialization
-	void Start () {
-        if(TileMapChunkGenerator._Instance != null)
+    Rigidbody2D rigidBody;
+    float moveHorizontal, moveVertical;
+    public Vector3 moveDirection;
+    public Vector2 lastMoveDir;
+    Player player;
+
+    // Use this for initialization
+    void Start () {
+
+        if (TileMapChunkGeneratorV2._Instance != null)
         {
-            Tilemap tilemapChunkMin = TileMapChunkGenerator._Instance.tilemapChunks[0].layers[0].tilemap;
-            Tilemap tilemapChunkMax = TileMapChunkGenerator._Instance.tilemapChunks[TileMapChunkGenerator._Instance.tilemapChunks.Length - 1].layers[0].tilemap; Vector3 minTile = tilemapChunkMin.CellToWorld(tilemapChunkMin.cellBounds.min);
-            Vector3 maxTile = tilemapChunkMin.CellToWorld(tilemapChunkMax.cellBounds.max);
-            xMin = minTile.x;
-            xMax = maxTile.x;
-            yMin = minTile.y;
-            yMax = maxTile.y;
+            Vector3[] bounds = TileMapChunkGeneratorV2._Instance.MapBounds();
+            xMin = bounds[0].x;
+            xMax = bounds[1].x;
+            yMin = bounds[0].y;
+            yMax = bounds[1].y;
         }
         else
         {
             xMin = yMin = 0;
             xMax = yMax = 3000;
         }
+        rigidBody = GetComponent<Rigidbody2D>();
+        player = GetComponent<Player>();
+
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKey(KeyCode.A) && transform.position.x > xMin)
+
+    // Update is called once per frame
+    public void HandleInput() {
+        if (player.state != CharacterState.Idle && player.state != CharacterState.Moving)
         {
-            transform.position 
-                = new Vector3(transform.position.x - moveSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+            return;
         }
-        if (Input.GetKey(KeyCode.D) && transform.position.x < xMax)
+
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+        moveDirection = new Vector3(moveHorizontal, moveVertical, 0);
+        if (moveHorizontal == 0 && moveVertical == 0)
         {
-            transform.position
-                = new Vector3(transform.position.x + moveSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+            player.state = CharacterState.Idle;
         }
-        if (Input.GetKey(KeyCode.W) && transform.position.y < yMax)
+        else
         {
-            transform.position
-                = new Vector3(transform.position.x, transform.position.y + moveSpeed * Time.deltaTime, transform.position.z);
+            player.state = CharacterState.Moving;
+            lastMoveDir = moveDirection;
         }
-        if (Input.GetKey(KeyCode.S) && transform.position.y > yMin)
+    }
+
+    /// <summary>
+    /// Call this in FixedUpdate for physics based movement updates
+    /// </summary>
+    public void FixedMovementUpdate()
+    {
+        if (player.state != CharacterState.Idle && player.state != CharacterState.Moving)
         {
-            transform.position
-                = new Vector3(transform.position.x, transform.position.y - moveSpeed * Time.deltaTime, transform.position.z);
+            StopMovement();
+            return;
         }
+        //rigidBody.velocity = Vector3.zero;
+        rigidBody.velocity = moveDirection * moveSpeed * Time.fixedDeltaTime;
+    }
+
+    public void StopMovement()
+    {
+        rigidBody.velocity = Vector3.zero;
     }
 }

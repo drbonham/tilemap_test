@@ -6,21 +6,19 @@ using UnityEngine.Tilemaps;
 public class PlayerCameraFollow : MonoBehaviour {
 
     Transform target;
-    Tilemap tilemapChunkMin;
-    Tilemap tilemapChunkMax;
 
     float xMax, xMin, yMax, yMin;
+    // Camera
+    public float _minZoom = 1f;
+    public float _maxZoom = 20f;
 
     void Start()
     {
         target = transform;
-        if (TileMapChunkGenerator._Instance != null)
+        if (TileMapChunkGeneratorV2._Instance != null)
         {
-            Tilemap tilemapChunkMin = TileMapChunkGenerator._Instance.tilemapChunks[0].layers[0].tilemap;
-            Tilemap tilemapChunkMax = TileMapChunkGenerator._Instance.tilemapChunks[TileMapChunkGenerator._Instance.tilemapChunks.Length - 1].layers[0].tilemap;
-            Vector3 minTile = tilemapChunkMin.CellToWorld(tilemapChunkMin.cellBounds.min);
-            Vector3 maxTile = tilemapChunkMin.CellToWorld(tilemapChunkMax.cellBounds.max);
-            SetLimits(minTile, maxTile);
+            Vector3[] bounds = TileMapChunkGeneratorV2._Instance.MapBounds();
+            SetLimits(bounds[0], bounds[1]);
         }
         else
         {
@@ -34,6 +32,9 @@ public class PlayerCameraFollow : MonoBehaviour {
         Vector3 targetPos = new Vector3(Mathf.Clamp(target.position.x,xMin,xMax),
             Mathf.Clamp(target.position.y,yMin,yMax), -10);
         Camera.main.transform.position = targetPos;
+
+        Camera.main.orthographicSize -= Camera.main.orthographicSize * Input.GetAxis("Mouse ScrollWheel");
+        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, _minZoom, _maxZoom);
     }
 
     void SetLimits(Vector3 minTile, Vector3 maxTile)

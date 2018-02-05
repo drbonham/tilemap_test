@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TileMapChunkGeneratorV2 : MonoBehaviour {
+    public static TileMapChunkGeneratorV2 _Instance;
 
     public int seed;
    
@@ -16,6 +17,8 @@ public class TileMapChunkGeneratorV2 : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
+        if (_Instance == null)
+            _Instance = this;
         totalSize = new Vector2Int(chunkCnt.x * chunkSize.x, chunkCnt.y * chunkSize.y);
         Random.InitState(seed);
         InitializeChunks();
@@ -101,6 +104,20 @@ public class TileMapChunkGeneratorV2 : MonoBehaviour {
                 }
             }
         }
+    }
+
+    // Return the min tile and max tile cell bounds
+    public Vector3[] MapBounds()
+    {
+        Vector3[] bounds = new Vector3[2];
+
+        Tilemap tilemapChunkMin = mapChunks[0].layers[0].go.GetComponent<Tilemap>();
+        Tilemap tilemapChunkMax = mapChunks[TileMapChunkGeneratorV2._Instance.mapChunks.Length - 1].layers[0].go.GetComponent<Tilemap>();
+        Vector3 minTile = tilemapChunkMin.CellToWorld(tilemapChunkMin.cellBounds.min);
+        Vector3 maxTile = tilemapChunkMin.CellToWorld(tilemapChunkMax.cellBounds.max);
+        bounds[0] = minTile;
+        bounds[1] = maxTile;
+        return bounds;
     }
 }
 
