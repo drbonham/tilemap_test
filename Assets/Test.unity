@@ -155,12 +155,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seed: 22
-  chunkCnt: {x: 20, y: 20}
-  chunkSize: {x: 20, y: 10}
+  chunkCnt: {x: 10, y: 10}
+  chunkSize: {x: 40, y: 40}
   layerSettings:
   - name: Base
     tileSettings:
-    - tileType: {fileID: 11400000, guid: 6f60cb92e1d7fdb49acbb7353d92ac93, type: 2}
+    - name: 
+      tileType: {fileID: 11400000, guid: 6f60cb92e1d7fdb49acbb7353d92ac93, type: 2}
       noiseMapMode: 0
       randomizeDensity: 0
       noiseThreshold: 0
@@ -191,7 +192,8 @@ MonoBehaviour:
       persistance: 0.6
       lacunarity: 9.3
       offset: {x: 30, y: 30}
-    - tileType: {fileID: 11400000, guid: b6966073f2e1c9242a297b40ce706bae, type: 2}
+    - name: 
+      tileType: {fileID: 11400000, guid: b6966073f2e1c9242a297b40ce706bae, type: 2}
       noiseMapMode: 0
       randomizeDensity: 1
       noiseThreshold: 0.8
@@ -311,7 +313,7 @@ Prefab:
     - target: {fileID: 224091484260874466, guid: 3f1463efbb6fe7f4fa6b50161edb4997,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224091484260874466, guid: 3f1463efbb6fe7f4fa6b50161edb4997,
         type: 2}
@@ -1120,9 +1122,31 @@ Prefab:
       propertyPath: _maxZoom
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114397310620312522, guid: 61e7e59cd80153e4690bb58486347cff,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61e7e59cd80153e4690bb58486347cff, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1638766907 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1083232132695316, guid: 61e7e59cd80153e4690bb58486347cff,
+    type: 2}
+  m_PrefabInternal: {fileID: 1638766906}
+--- !u!114 &1638766908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1638766907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7772732031e7247bfea6e77f7bd433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxViewDistance: 1
 --- !u!114 &1798429561 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114842020023692818, guid: 3f1463efbb6fe7f4fa6b50161edb4997,
