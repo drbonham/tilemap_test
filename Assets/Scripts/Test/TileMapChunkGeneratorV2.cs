@@ -103,6 +103,20 @@ public class TileMapChunkGeneratorV2 : MonoBehaviour {
             }
         }
     }
+
+    // Return the min tile and max tile cell bounds
+    public Vector3[] MapBounds()
+    {
+        Vector3[] bounds = new Vector3[2];
+
+        Tilemap tilemapChunkMin = mapChunks[0].layers[0].go.GetComponent<Tilemap>();
+        Tilemap tilemapChunkMax = mapChunks[TileMapChunkGeneratorV2._Instance.mapChunks.Length - 1].layers[0].go.GetComponent<Tilemap>();
+        Vector3 minTile = tilemapChunkMin.CellToWorld(tilemapChunkMin.cellBounds.min);
+        Vector3 maxTile = tilemapChunkMin.CellToWorld(tilemapChunkMax.cellBounds.max);
+        bounds[0] = minTile;
+        bounds[1] = maxTile;
+        return bounds;
+    }
 }
 
 // The actual game object chunk

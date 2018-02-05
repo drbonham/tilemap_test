@@ -20,7 +20,7 @@ public class Obstacle : MonoBehaviour {
     public Collider2D gatherCollider;
     public ItemPickup dropItem;
     public Vector2Int dropItemAmtRange;
-
+    public Vector2 tilePlacementOffset = new Vector2(0.5f, 0.5f);
     Color originalColor;
     Color transparentColor;
 
@@ -30,6 +30,8 @@ public class Obstacle : MonoBehaviour {
         originalColor = sr.color;
         transparentColor = originalColor;
         transparentColor.a = transparentAlpha;
+        transform.position = new Vector3(transform.position.x + tilePlacementOffset.x, 
+            transform.position.y + tilePlacementOffset.y, transform.position.z);
     }
 
 	public void SetTransparent(bool value)
@@ -56,8 +58,8 @@ public class Obstacle : MonoBehaviour {
             {
                 ItemPickup drop = Instantiate<ItemPickup>(dropItem);
                 drop.transform.SetParent(transform.parent);
-                drop.transform.position = new Vector3(transform.position.x + Random.Range(0f, 1f),
-                    transform.position.y + Random.Range(0f, 1f), transform.position.z);
+                drop.transform.position = new Vector3(transform.position.x + Random.Range(0f, 0.5f),
+                    transform.position.y + Random.Range(0f, 0.5f), transform.position.z);
             }
         }
         Destroy(gameObject);
