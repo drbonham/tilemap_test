@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seed: 22
-  chunkCnt: {x: 5, y: 5}
-  chunkSize: {x: 10, y: 10}
+  chunkCnt: {x: 20, y: 20}
+  chunkSize: {x: 20, y: 10}
   layerSettings:
   - name: Base
     tileSettings:
@@ -168,19 +168,21 @@ MonoBehaviour:
       octaves: 2
       persistance: 0.45
       lacunarity: 1.32
-      offset: {x: 30, y: 30}
-    - tileType: {fileID: 11400000, guid: 01cd7e2bcb1456e4ea303b99fc89817f, type: 2}
+      offset: {x: 0, y: 0}
+    - name: Grass
+      tileType: {fileID: 11400000, guid: 7c42e25f0c98f8f469ab4f335c70d8f6, type: 2}
       noiseMapMode: 0
       randomizeDensity: 1
       noiseThreshold: 0
       scale: 10
       octaves: 4
-      persistance: 0
-      lacunarity: 0.3
+      persistance: 0.099
+      lacunarity: 1.32
       offset: {x: 0, y: 0}
   - name: Objects
     tileSettings:
-    - tileType: {fileID: 11400000, guid: 1184ec8c7867faa4daf6bc5fbe19f19c, type: 2}
+    - name: 
+      tileType: {fileID: 11400000, guid: 1184ec8c7867faa4daf6bc5fbe19f19c, type: 2}
       noiseMapMode: 0
       randomizeDensity: 1
       noiseThreshold: 0

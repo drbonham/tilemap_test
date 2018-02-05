@@ -7,18 +7,18 @@ public class TileMapChunkGeneratorV2 : MonoBehaviour {
     public static TileMapChunkGeneratorV2 _Instance;
 
     public int seed;
+   
     public Vector2Int chunkCnt;
     public Vector2Int chunkSize;
     public LayerSettings[] layerSettings;
 
     Vector2Int totalSize;
-    MapChunk[] mapChunks;
+    public MapChunk[] mapChunks;
 
     // Use this for initialization
     void Awake () {
         if (_Instance == null)
             _Instance = this;
-
         totalSize = new Vector2Int(chunkCnt.x * chunkSize.x, chunkCnt.y * chunkSize.y);
         Random.InitState(seed);
         InitializeChunks();
@@ -36,6 +36,8 @@ public class TileMapChunkGeneratorV2 : MonoBehaviour {
                 mapChunks[x * chunkCnt.x + y].go = new GameObject("Chunk_" + x + " " + y);
                 mapChunks[x * chunkCnt.x + y].go.transform.SetParent(transform);
                 mapChunks[x * chunkCnt.x + y].layers = new MapLayer[layerSettings.Length];
+                mapChunks[x * chunkCnt.x + y].chunkCoord = new Vector2Int(x, y);
+                mapChunks[x * chunkCnt.x + y].IsVisible(false);
                 // Generate game object and tilemap/renderer component for each layer in the chunk
                 // baesd on layersettings
                 for (int i = 0; i < layerSettings.Length; i++)
@@ -119,12 +121,21 @@ public class TileMapChunkGeneratorV2 : MonoBehaviour {
     }
 }
 
+
 // The actual game object chunk
 public struct MapChunk
 {
     public GameObject go;
+    public Vector2Int chunkCoord;
     public MapLayer[] layers;
+
+    public void IsVisible(bool visible)
+    {
+        go.SetActive(visible);
+    }
+
 }
+
 
 // The actual game object layer
 public struct MapLayer
@@ -144,8 +155,8 @@ public struct LayerSettings
 [System.Serializable]
 public struct TileSettings
 {
+    public string name;
     public Tile tileType;
-
     public bool noiseMapMode;
     public bool randomizeDensity;
     [Range(0,1)]
