@@ -29,7 +29,6 @@ public class Player : MonoBehaviour {
         {
             state = CharacterState.Slashing;
             playerMovement.StopMovement();
-            selectedTool.TryGather();
         }
         playerMovement.HandleInput();
 

@@ -20,7 +20,7 @@ public class NetworkPlayerTool : NetworkBehaviour {
 
         if (Input.GetMouseButtonDown(0) && selectedTool != null)
         {
-            selectedTool.TryGather();
+            //selectedTool.TryGather();
         }
     }
 }

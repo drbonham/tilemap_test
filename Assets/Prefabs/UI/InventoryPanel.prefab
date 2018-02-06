@@ -79,7 +79,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotCnt: 20
-  slotPrefab: {fileID: 1661929739667166, guid: df8905d8737005a429125f22017e7502, type: 2}
+  slotPrefab: {fileID: 0}
+  inventoryPanel: {fileID: 0}
+  items: []
+  allSlots: []
 --- !u!114 &114842020023692818
 MonoBehaviour:
   m_ObjectHideFlags: 1

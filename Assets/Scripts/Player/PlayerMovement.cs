@@ -41,8 +41,8 @@ public class PlayerMovement : MonoBehaviour {
             return;
         }
 
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        float moveHorizontal = Input.GetAxisRaw("Horizontal");
+        float moveVertical = Input.GetAxisRaw("Vertical");
         moveDirection = new Vector3(moveHorizontal, moveVertical, 0);
         if (moveHorizontal == 0 && moveVertical == 0)
         {
