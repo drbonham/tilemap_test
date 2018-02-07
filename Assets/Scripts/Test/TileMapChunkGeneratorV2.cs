@@ -22,6 +22,7 @@ public class TileMapChunkGeneratorV2 : MonoBehaviour {
         totalSize = new Vector2Int(chunkCnt.x * chunkSize.x, chunkCnt.y * chunkSize.y);
         Random.InitState(seed);
         InitializeChunks();
+        PrebuiltPlacer.Placer(FindObjectOfType<PrebuiltPlacer>().buildings[0], mapChunks[0].layers[2].go.GetComponent<Tilemap>(),new Vector3Int(1,1,0));
         Generate();
     }
 
@@ -37,7 +38,6 @@ public class TileMapChunkGeneratorV2 : MonoBehaviour {
                 mapChunks[x * chunkCnt.x + y].go.transform.SetParent(transform);
                 mapChunks[x * chunkCnt.x + y].layers = new MapLayer[layerSettings.Length];
                 mapChunks[x * chunkCnt.x + y].chunkCoord = new Vector2Int(x, y);
-                mapChunks[x * chunkCnt.x + y].IsVisible(false);
                 // Generate game object and tilemap/renderer component for each layer in the chunk
                 // baesd on layersettings
                 for (int i = 0; i < layerSettings.Length; i++)
@@ -100,6 +100,7 @@ public class TileMapChunkGeneratorV2 : MonoBehaviour {
                                 }
                             }
                         }
+                        mapChunks[x * chunkCnt.x + y].IsVisible(false);
                     }
                 }
             }

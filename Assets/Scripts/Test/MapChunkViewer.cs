@@ -53,7 +53,7 @@ public class MapChunkViewer : MonoBehaviour {
                     if (Mathf.Abs(currentChunkPosition.x - lastChunkPosition.x) > 0)
                     {
                         int newX = (lastChunkPosition.x - (currentChunkPosition.x - lastChunkPosition.x) * maxViewDistance);
-                        if (newX >= 0)
+                        if (newX >= 0 && newX < chunkCnt.x)
                         {
                             mapChunks[newX * chunkCnt.x + y].IsVisible(false);
                         }
@@ -61,7 +61,7 @@ public class MapChunkViewer : MonoBehaviour {
                     if (Mathf.Abs(currentChunkPosition.y - lastChunkPosition.y) > 0)
                     {
                         int newY = (lastChunkPosition.y - (currentChunkPosition.y - lastChunkPosition.y) * maxViewDistance);
-                        if (newY >= 0)
+                        if (newY >= 0 && newY < chunkCnt.y)
                         {
                             mapChunks[x * chunkCnt.x + newY].IsVisible(false);
                         }
